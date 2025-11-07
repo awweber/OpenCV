@@ -36,6 +36,25 @@ see 'tutorial.ipynb' for tutorials on (based on Udemy course):
 
 ## Projects
 
+### Image Filtering & Edge Detection
+- **File:** `Image_Filtering_Edge_Detection.py`
+- **Description:** Real-time camera filters and edge detection
+- **Features:**
+  - Live webcam feed processing
+  - Multiple filter modes:
+    - **Preview Mode (P):** Original camera feed
+    - **Canny Edge Detection (C):** Black and white edge detection
+    - **Blur Filter (B):** Gaussian blur effect (13x13 kernel)
+    - **Corner Feature Detection (F):** Green circles marking detected corners
+  - Interactive keyboard controls
+  - Horizontal mirror effect
+- **Controls:**
+  - `P` - Preview mode (original)
+  - `C` - Canny edge detection
+  - `B` - Blur filter
+  - `F` - Feature/corner detection
+  - `Q` or `ESC` - Exit
+
 ### Face Detection
 - **File:** `Face_Detection.py`
 - **Description:** Real-time face detection using pre-trained Caffe model
@@ -121,6 +140,9 @@ pip install numpy matplotlib
 All real-time scripts support webcam input and can be run with:
 
 ```bash
+# Image Filtering & Edge Detection
+python Image_Filtering_Edge_Detection.py
+
 # Object Detection
 python Object_Detection.py
 
@@ -135,7 +157,8 @@ python Face_Detection.py
 ```
 
 **Controls:**
-- Press `ESC` to exit any real-time detection script
+- **Image Filtering:** Use `P`, `C`, `B`, `F` keys to switch filters; `Q` or `ESC` to exit
+- **All other scripts:** Press `ESC` to exit
 - Webcam feed is horizontally flipped for mirror effect
 
 ### Image Processing

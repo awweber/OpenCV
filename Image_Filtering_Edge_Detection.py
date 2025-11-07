@@ -2,33 +2,43 @@ import cv2
 import sys
 import numpy
 
+# Define filter modes
 PREVIEW  = 0  # Preview Mode
 BLUR     = 1  # Blurring Filter
 FEATURES = 2  # Corner Feature Detector
 CANNY    = 3  # Canny Edge Detector
 
+# Feature detection parameters
 maxCorners:int = 500
 feature_params = dict(maxCorners=maxCorners, qualityLevel=0.2, minDistance=15, blockSize=9)
+
+# Get video source from command line argument or default to camera 0
 s = 0
 if len(sys.argv) > 1:
     s = sys.argv[1]
 
+# Initialize video source
 image_filter = PREVIEW
 alive = True
 
+# Create window for display
 win_name = "Camera Filters"
 cv2.namedWindow(win_name, cv2.WINDOW_NORMAL)
 result = None
 
+# Initialize video capture
 source = cv2.VideoCapture(s)
 
+# Main processing loop
 while alive:
     has_frame, frame = source.read()
     if not has_frame:
         break
-
+    
+    # Flip frame horizontally for mirror effect
     frame = cv2.flip(frame, 1)
 
+    # Apply selected filter
     if image_filter == PREVIEW:
         result = frame
     elif image_filter == CANNY:
@@ -49,6 +59,7 @@ while alive:
 
     cv2.imshow(win_name, result) # type: ignore
 
+    # Handle key inputs
     key = cv2.waitKey(1)
     if key == ord("Q") or key == ord("q") or key == 27:
         alive = False
